@@ -18,9 +18,26 @@ while game:
         # ----- Verifica consequências
         if event.type == pygame.QUIT:
             game = False
-        # ----- Qualquer tecla fecha o jogo
+            
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT or event.key == ord('a'):
+                print('left')
+            if event.key == pygame.K_RIGHT or event.key == ord('d'):
+                print('right')
+            if event.key == pygame.K_UP or event.key == ord('w'):
+                print('up')
+            if event.key == pygame.K_DOWN or event.key == ord('s'):
+                print('down')
+        
         if event.type == pygame.KEYUP:
-            game = False
+            if event.key == pygame.K_LEFT or event.key == ord('a'):
+                print('left stop')
+            if event.key == pygame.K_RIGHT or event.key == ord('d'):
+                print('right stop')
+            if event.key == pygame.K_UP or event.key == ord('w'):
+                print('up stop')
+            if event.key == pygame.K_DOWN or event.key == ord('s'):
+                print('down stop')
 
     # ----- Gera saídas
     window.fill((0, 0, 0))  # Preenche com a cor preta
