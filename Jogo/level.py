@@ -1,5 +1,5 @@
 import pygame 
-from settings import *
+from config import *
 from tileset import Tile
 from player import Player
 

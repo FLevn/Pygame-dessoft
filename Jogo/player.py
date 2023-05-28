@@ -1,5 +1,5 @@
 import pygame 
-from settings import *
+from config import *
 
 class Player(pygame.sprite.Sprite):
 	def __init__(self,pos,groups,obstacle_sprites):
