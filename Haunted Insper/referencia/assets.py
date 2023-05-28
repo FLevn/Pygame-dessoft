@@ -8,6 +8,7 @@ ghost_IMG = 'ghost_img'
 ghost_IMG = 'ghost_img'
 player_IMG = 'player_img'
 player_IMG = 'player_img'
+jumpscare_anim = 'jumpscare_anim'
 
 def load_assets():
     assets = {}
@@ -16,4 +17,5 @@ def load_assets():
     assets[ghost_IMG] = pygame.transform.scale(assets['ghost.png'], (ghost_WIDTH, ghost_HEIGHT))
     assets[player_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'player.png')).convert_alpha()
     assets[player_IMG] = pygame.transform.scale(assets['player.png'], (player_WIDTH, player_HEIGHT))
+    assets[jumpscare_anim] = pygame.image.load(os.path.join(IMG_DIR, 'jumpscare.png')).convert_alpha()
     return assets
