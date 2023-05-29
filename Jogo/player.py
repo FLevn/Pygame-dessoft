@@ -120,12 +120,12 @@ class Player(pygame.sprite.Sprite):
 	def animate(self):
 		animation = self.animations[self.status]
 
-		# loop over the frame index 
+		# índice do frame 
 		self.frame_index += self.animation_speed
 		if self.frame_index >= len(animation):
 			self.frame_index = 0
 
-		# set the image
+		# imagem
 		self.image = animation[int(self.frame_index)]
 		self.rect = self.image.get_rect(center = self.hitbox.center)
 
