@@ -25,9 +25,11 @@ class Enemy(Entity):
 		self.can_attack = True
 		self.attack_time = None
 		self.attack_cooldown = 400
+		self.attack_radius = 60
+		self.notice_radius = 400
 
 	def import_graphics(self):
-		self.animations = {'idle':[],'move':[],'attack':[]}
+		self.animations = {'idle':[],'move':[],'attack':[],'taking damage':[],'dead':[]}
 		main_path = f'/assets/anim/round ghost/'
 		for animation in self.animations.keys():
 			self.animations[animation] = import_folder(main_path + animation)
