@@ -5,7 +5,7 @@ from player import Player
 
 class Level:
 	def __init__(self):
-
+		
 		# display
 		self.display_surface = pygame.display.get_surface()
 
