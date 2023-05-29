@@ -2,6 +2,7 @@ import pygame
 from config import *
 from tileset import Tile
 from player import Player
+from enemy import Enemy
 
 class Level:
 	def __init__(self):
@@ -25,6 +26,8 @@ class Level:
 					Tile((x,y),[self.visible_sprites,self.obstacle_sprites])
 				if col == 'p':
 					self.player = Player((x,y),[self.visible_sprites],self.obstacle_sprites)
+				if col == 'g':
+					Enemy((x,y),[self.visible_sprites],self.obstacle_sprites)
 
 	def run(self):
 		# update
