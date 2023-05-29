@@ -14,12 +14,13 @@ class Enemy(Entity):
 		self.import_graphics()
 		self.status = 'idle'
 		self.image = self.animations[self.status][self.frame_index]
+		self.image = pygame.transform.scale(self.image, (TILESIZE, TILESIZE))
 
 		# movimento
 		self.rect = self.image.get_rect(topleft = pos)
 		self.hitbox = self.rect.inflate(0,-10)
 		self.obstacle_sprites = obstacle_sprites
-		self.speed = 2
+		self.speed = 3
 
 		# interação com player
 		self.can_attack = True
@@ -30,7 +31,7 @@ class Enemy(Entity):
 
 	def import_graphics(self):
 		self.animations = {'idle':[],'move':[],'attack':[],'taking damage':[],'dead':[]}
-		main_path = f'/assets/anim/round ghost/'
+		main_path = f'assets/anim/round_ghost/'
 		for animation in self.animations.keys():
 			self.animations[animation] = import_folder(main_path + animation)
 
