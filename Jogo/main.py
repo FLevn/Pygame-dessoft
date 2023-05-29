@@ -1,15 +1,26 @@
 import pygame, sys
 from config import *
 from level import Level
+from init_screen import init_screen
 
 class Game:
 	def __init__(self):
 		  
 		# setup geral
 		pygame.init()
+		
 		self.screen = pygame.display.set_mode((WIDTH,HEIGTH))
 		pygame.display.set_caption('Haunted Insper')
 		self.clock = pygame.time.Clock()
+
+		# state = INIT
+		# while state != QUIT:
+		# 	if state == INIT:
+		# 		state = init_screen(self.screen)
+		# 	elif state == GAME:
+		# 		self.level = Level()
+		# 	else:
+		# 		state = QUIT
 
 		self.level = Level()
 	

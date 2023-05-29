@@ -52,17 +52,6 @@ SND_DIR = path.join(path.dirname(__file__), 'assets', 'snd')
 FNT_DIR = path.join(path.dirname(__file__), 'assets', 'font')
 GIF_DIR = path.join(path.dirname(__file__), 'assets', 'gif')
 
-# Dados gerais do jogo.
-WIDTH = 600 # Largura da tela
-HEIGHT = 600 # Altura da tela
-FPS = 60 # Frames por segundo
-
-# Define tamanhos
-ghost_WIDTH = 40
-ghost_HEIGHT = 40
-player_WIDTH = 40
-player_HEIGHT = 40
-
 # Define algumas variáveis com as cores básicas
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
