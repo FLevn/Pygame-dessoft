@@ -34,7 +34,7 @@ class Level:
 				if col == 'p':
 					self.player = Player((x,y),[self.visible_sprites],self.obstacle_sprites,self.create_attack,self.destroy_attack)
 				if col == 'g':
-					Enemy((x,y),[self.visible_sprites],self.obstacle_sprites,self.damage_player)
+					Enemy((x,y),[self.visible_sprites,self.attackable_sprites],self.obstacle_sprites,self.damage_player)
 
 	def create_attack(self):
 		
@@ -69,7 +69,7 @@ class YSortCameraGroup(pygame.sprite.Group):
 		self.offset = pygame.math.Vector2()
 
 		# chão
-		self.floor_surf = pygame.image.load('assets/img/dark wood floor.jpg').convert()
+		self.floor_surf = pygame.image.load('assets/img/wood_floor.jpg').convert()
 		self.floor_surf = pygame.transform.scale(self.floor_surf, (2432, 2368))
 		self.floor_rect = self.floor_surf.get_rect(topleft = (0,0))
 
