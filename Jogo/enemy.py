@@ -4,7 +4,7 @@ from entity import Entity
 from support import *
 
 class Enemy(Entity):
-	def __init__(self,pos,groups,obstacle_sprites):
+	def __init__(self,pos,groups,obstacle_sprites,damage_player):
 
 		# setup
 		super().__init__(groups)
@@ -27,6 +27,7 @@ class Enemy(Entity):
 		self.attack_cooldown = 400
 		self.attack_radius = 60
 		self.notice_radius = 450
+		self.damage_player = damage_player
 
 	def import_graphics(self):
 		self.animations = {'idle':[],'move':[],'attack':[],'taking damage':[],'dead':[]}
@@ -84,6 +85,12 @@ class Enemy(Entity):
 			current_time = pygame.time.get_ticks()
 			if current_time - self.attack_time >= self.attack_cooldown:
 				self.can_attack = True
+
+	def get_damage(self,attack_type):
+		if attack_type == 'weapon':
+			self.kill()
+		else:
+			pass
 
 	def update(self):
 		self.move(self.speed)

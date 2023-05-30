@@ -9,6 +9,7 @@ class Flashlight(pygame.sprite.Sprite):
 		# gráfico
 		full_path = f'assets/img/flashlight/{direction}.png'
 		self.image = pygame.image.load(full_path).convert_alpha()
+		self.image = pygame.transform.scale(self.image, (32, 32))
 		
 		# posicionamento
 		if direction == 'right':

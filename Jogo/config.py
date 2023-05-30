@@ -43,6 +43,10 @@ WORLD_MAP = [
 ['x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'],
 ]
 
+flashlight_data = {
+	'flashlight': {'cooldown': 100, 'damage': 15,'graphic':'assets/img/flashlight/up.png'}
+}
+
 
 from os import path
 
