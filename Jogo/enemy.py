@@ -19,15 +19,21 @@ class Enemy(Entity):
 		self.rect = self.image.get_rect(topleft = pos)
 		self.hitbox = self.rect.inflate(0,-10)
 		self.obstacle_sprites = obstacle_sprites
-		self.speed = 4
+		self.speed = 3.7
 
 		# interação com player
+		self.health = 70
 		self.can_attack = True
 		self.attack_time = None
 		self.attack_cooldown = 400
 		self.attack_radius = 60
 		self.notice_radius = 450
+		self.attack_damage = 30
 		self.damage_player = damage_player
+		self.vulnerable = True
+		self.hit_time = None
+		self.invincibility_duration = 300
+		self.resistance = 3
 
 	def import_graphics(self):
 		self.animations = {'idle':[],'move':[],'attack':[],'taking damage':[],'dead':[]}
@@ -62,7 +68,7 @@ class Enemy(Entity):
 	def actions(self,player):
 		if self.status == 'attack':
 			self.attack_time = pygame.time.get_ticks()
-			kill = True
+			self.damage_player(self.attack_damage,'weapon')
 		elif self.status == 'move':
 			self.direction = self.get_player_distance_direction(player)[1]
 		else:
@@ -80,22 +86,48 @@ class Enemy(Entity):
 		self.image = animation[int(self.frame_index)]
 		self.rect = self.image.get_rect(center = self.hitbox.center)
 
-	def cooldown(self):
+		if not self.vulnerable:
+			alpha = self.wave_value()
+			self.image.set_alpha(alpha)
+		else:
+			self.image.set_alpha(255)
+
+	def cooldowns(self):
+		current_time = pygame.time.get_ticks()
 		if not self.can_attack:
-			current_time = pygame.time.get_ticks()
 			if current_time - self.attack_time >= self.attack_cooldown:
 				self.can_attack = True
 
-	def get_damage(self,attack_type):
-		if attack_type == 'weapon':
+		if not self.vulnerable:
+			if current_time - self.hit_time >= self.invincibility_duration:
+				self.vulnerable = True
+
+	def get_damage(self,player,attack_type):
+		if self.vulnerable:
+			self.direction = self.get_player_distance_direction(player)[1]
+			if attack_type == 'weapon':
+				self.health -= 25
+			else:
+				pass
+			self.hit_time = pygame.time.get_ticks()
+			self.vulnerable = False
+
+	def check_death(self):
+		if self.health <= 0:
 			self.kill()
-		else:
-			pass
+			self.status == 'dead'
+
+	def hit_reaction(self):
+		if not self.vulnerable:
+			self.direction *= -self.resistance
+			self.status == 'taking damage'
 
 	def update(self):
+		self.hit_reaction()
 		self.move(self.speed)
 		self.animate()
-		self.cooldown()
+		self.cooldowns()
+		self.check_death()
 
 	def enemy_update(self,player):
 		self.get_status(player)

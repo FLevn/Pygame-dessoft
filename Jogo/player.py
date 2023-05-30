@@ -13,8 +13,6 @@ class Player(Entity):
 		# gráficos
 		self.import_player_assets()
 		self.status = 'down'
-		self.frame_index = 0
-		self.animation_speed = 0.15
 
 		# movimento
 		self.direction = pygame.math.Vector2()
@@ -24,11 +22,11 @@ class Player(Entity):
 		self.attack_time = None
 		self.obstacle_sprites = obstacle_sprites
 
+		self.health = 90
+
 		# flashlight
 		self.create_attack = create_attack
 		self.destroy_attack = destroy_attack
-		self.weapon_index = 0
-		self.weapon = list(flashlight_data.keys())[self.weapon_index]
 
 		self.vulnerable = True
 		self.hurt_time = None
@@ -95,34 +93,6 @@ class Player(Entity):
 			if 'attack' in self.status:
 				self.status = self.status.replace('_attack','')
 
-	# def move(self,speed):
-	# 	if self.direction.magnitude() != 0:
-	# 		self.direction = self.direction.normalize()
-
-	# 	self.hitbox.x += self.direction.x * speed
-	# 	self.collision('horizontal')
-	# 	self.hitbox.y += self.direction.y * speed
-	# 	self.collision('vertical')
-	# 	self.rect.center = self.hitbox.center
-		
-
-	# def collision(self,direction):
-	# 	if direction == 'horizontal':
-	# 		for sprite in self.obstacle_sprites:
-	# 			if sprite.hitbox.colliderect(self.hitbox):
-	# 				if self.direction.x > 0: # direita
-	# 					self.hitbox.right = sprite.hitbox.left
-	# 				if self.direction.x < 0: # esquerda
-	# 					self.hitbox.left = sprite.hitbox.right
-
-	# 	if direction == 'vertical':
-	# 		for sprite in self.obstacle_sprites:
-	# 			if sprite.hitbox.colliderect(self.hitbox):
-	# 				if self.direction.y > 0: # baixo
-	# 					self.hitbox.bottom = sprite.hitbox.top
-	# 				if self.direction.y < 0: # cima
-	# 					self.hitbox.top = sprite.hitbox.bottom
-
 	def cooldowns(self):
 		current_time = pygame.time.get_ticks()
 
@@ -146,6 +116,12 @@ class Player(Entity):
 		# imagem
 		self.image = animation[int(self.frame_index)]
 		self.rect = self.image.get_rect(center = self.hitbox.center)
+
+		if not self.vulnerable:
+			alpha = self.wave_value()
+			self.image.set_alpha(alpha)
+		else:
+			self.image.set_alpha(255)
 
 	def update(self):
 		self.input()
