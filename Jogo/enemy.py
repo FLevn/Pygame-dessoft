@@ -14,20 +14,19 @@ class Enemy(Entity):
 		self.import_graphics()
 		self.status = 'idle'
 		self.image = self.animations[self.status][self.frame_index]
-		self.image = pygame.transform.scale(self.image, (TILESIZE, TILESIZE))
 
 		# movimento
 		self.rect = self.image.get_rect(topleft = pos)
 		self.hitbox = self.rect.inflate(0,-10)
 		self.obstacle_sprites = obstacle_sprites
-		self.speed = 3
+		self.speed = 4.5
 
 		# interação com player
 		self.can_attack = True
 		self.attack_time = None
 		self.attack_cooldown = 400
 		self.attack_radius = 60
-		self.notice_radius = 400
+		self.notice_radius = 450
 
 	def import_graphics(self):
 		self.animations = {'idle':[],'move':[],'attack':[],'taking damage':[],'dead':[]}
