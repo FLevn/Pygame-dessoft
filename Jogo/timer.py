@@ -1,12 +1,13 @@
 import pygame
 import time
+from config import *
 
 class Timer:
-    def __init__(self, screen, font, position=(10, 10), color=(255, 255, 255)):
+    def __init__(self, screen):
         self.screen = screen
-        self.font = font
-        self.position = position
-        self.color = color
+        self.font = pygame.font.Font('assets/font/PressStart2P.ttf', 28)
+        self.position = (10,10)
+        self.color = WHITE
         self.start_time = time.time()
 
     def update(self):
