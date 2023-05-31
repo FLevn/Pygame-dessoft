@@ -2,6 +2,7 @@ import pygame, sys
 from config import *
 from level import Level
 from init_screen import init_screen
+from timer import Timer
 
 class Game:
 	def __init__(self):
@@ -13,6 +14,8 @@ class Game:
 		self.clock = pygame.time.Clock()
 
 		self.level = Level()
+
+		self.timer = Timer(self.screen)
 	
 	def run(self):
 		while True:
