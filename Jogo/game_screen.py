@@ -3,7 +3,10 @@ from config import *
 from level import Level
 from init_screen import init_screen
 from timer import Timer
-
+pygame.mixer.init()
+pygame.mixer.music.load('Sons/trilha sonora do jogo.mp3')
+pygame.mixer.music.set_volume(0.1)
+pygame.mixer.music.play(loops=-1)
 class Game:
 	def __init__(self):
 		  
