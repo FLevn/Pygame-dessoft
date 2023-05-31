@@ -2,6 +2,7 @@ import pygame
 from config import *
 from support import import_folder
 from entity import Entity
+from jumpscare import Jumpscare
 
 class Player(Entity):
 	def __init__(self,pos,groups,obstacle_sprites,create_attack,destroy_attack):
@@ -104,6 +105,7 @@ class Player(Entity):
 		if not self.vulnerable:
 			if current_time - self.hurt_time >= self.invulnerability_duration:
 				self.vulnerable = True
+				self.health -= 30
 
 	def animate(self):
 		animation = self.animations[self.status]
@@ -123,9 +125,17 @@ class Player(Entity):
 		else:
 			self.image.set_alpha(255)
 
+	def check_death(self):
+		if self.health <= 0:
+			self.kill()
+			jumpscare = Jumpscare()
+			jumpscare.run()
+				
+
 	def update(self):
 		self.input()
 		self.cooldowns()
 		self.get_status()
 		self.animate()
 		self.move(self.speed)
+		self.check_death()
