@@ -19,7 +19,7 @@ class Enemy(Entity):
 		self.rect = self.image.get_rect(topleft = pos)
 		self.hitbox = self.rect.inflate(0,-10)
 		self.obstacle_sprites = obstacle_sprites
-		self.speed = 3.7
+		self.speed = 4
 
 		# interação com player
 		self.health = 70
@@ -102,15 +102,14 @@ class Enemy(Entity):
 			if current_time - self.hit_time >= self.invincibility_duration:
 				self.vulnerable = True
 
-	def get_damage(self,player,attack_type):
-		if self.vulnerable:
-			self.direction = self.get_player_distance_direction(player)[1]
-			if attack_type == 'weapon':
-				self.health -= 25
-			else:
-				pass
-			self.hit_time = pygame.time.get_ticks()
-			self.vulnerable = False
+	# def get_damage(self,player):
+	# 	if self.vulnerable:
+	# 		self.direction = self.get_player_distance_direction(player)[1]
+	# 		self.health -= 25
+	# 	else:
+	# 		pass
+	# 	self.hit_time = pygame.time.get_ticks()
+	# 	self.vulnerable = False
 
 	def check_death(self):
 		if self.health <= 0:
