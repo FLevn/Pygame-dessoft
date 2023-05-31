@@ -2,13 +2,12 @@ import pygame, sys
 from pygame.locals import *
 from config import *
 from level import Level
-from init_screen import init_screen
 from timer import Timer
+from player import Player
 pygame.mixer.init()
-pygame.mixer.music.load('assets/Sons/trilha.mp3')
-pygame.mixer.music.set_volume(1)
+pygame.mixer.music.load('assets/Sons/trilha sonora do jogo.mp3')
+pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(loops=-1)
-
 class Game:
 	def __init__(self):
 		  
@@ -44,7 +43,7 @@ class Game:
 			pygame.display.update()
 			self.clock.tick(FPS)
 			self.timer.update()
-
+			
 if __name__ == '__main__':
 	game = Game()
 	game.run()
