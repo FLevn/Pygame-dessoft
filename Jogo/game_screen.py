@@ -6,7 +6,7 @@ from timer import Timer
 from player import Player
 pygame.mixer.init()
 pygame.mixer.music.load('assets/Sons/trilha sonora do jogo.mp3')
-pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.set_volume(3)
 pygame.mixer.music.play(loops=-1)
 class Game:
 	def __init__(self):

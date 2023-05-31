@@ -19,7 +19,7 @@ class Enemy(Entity):
 		self.rect = self.image.get_rect(topleft = pos)
 		self.hitbox = self.rect.inflate(0,-10)
 		self.obstacle_sprites = obstacle_sprites
-		self.speed = 4
+		self.speed = 3.5
 
 		# interação com player
 		self.health = 70
