@@ -1,6 +1,6 @@
 import pygame
 import time
-
+from config import SOM_DIR, som
 class Jumpscare:
     def __init__(self):
         pygame.init()
@@ -22,7 +22,7 @@ class Jumpscare:
         self.total_jumpscare_frames = 2
         self.current_frame = 0
         self.jumpscare_start_time = 0
-
+        
     def run(self):
         # loop principal
         running = True
@@ -35,7 +35,7 @@ class Jumpscare:
             if self.current_frame < self.total_jumpscare_frames:
                 if self.current_frame == 0:
                     self.jumpscare_start_time = time.time()  # início do jumpscare
-
+                    
                 elapsed_time = time.time() - self.jumpscare_start_time
 
                 if elapsed_time >= self.jumpscare_time:
