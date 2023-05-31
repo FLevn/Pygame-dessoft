@@ -3,7 +3,6 @@ from config import *
 from support import import_folder
 from entity import Entity
 from jumpscare import Jumpscare
-
 class Player(Entity):
 	def __init__(self,pos,groups,obstacle_sprites,create_attack,destroy_attack):
 		super().__init__(groups)
@@ -130,7 +129,8 @@ class Player(Entity):
 			self.kill()
 			jumpscare = Jumpscare()
 			jumpscare.run()
-				
+			jumpscare = True
+			
 
 	def update(self):
 		self.input()
