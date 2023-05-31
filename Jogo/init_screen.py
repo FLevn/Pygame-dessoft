@@ -2,8 +2,8 @@ import random
 from os import path
 
 import pygame
-from config import BLACK, FPS, GAME, GIF_DIR, QUIT
-
+from config import BLACK, FPS, GAME, GIF_DIR, QUIT,HEIGTH, WIDTH
+WHITE=(255,255,255)
 
 def init_screen(screen):
     # Variável para o ajuste de velocidade
@@ -38,3 +38,24 @@ def init_screen(screen):
         pygame.display.flip()
 
     return state
+
+def start_screen():
+    screen=pygame.display.set_mode(1280,720)
+    pygame.display.set.caption('game title')
+    screen.fill(BLACK)
+    
+    # Display title text
+    font = pygame.font.Font(None, 48)
+    text = font.render("Game Title", True, WHITE)
+    text_rect = text.get_rect(center=(WIDTH // 2, HEIGTH // 2 - 50))
+    screen.blit(text, text_rect)
+    
+    # Display play button
+    play_button = pygame.Rect(WIDTH // 2 - 75, HEIGTH // 2 + 50, 150, 50)
+    pygame.draw.rect(screen, WHITE, play_button)
+    font = pygame.font.Font(None, 36)
+    text = font.render("Play", True, BLACK)
+    text_rect = text.get_rect(center=play_button.center)
+    screen.blit(text, text_rect)
+    
+    pygame.display.flip()
