@@ -27,7 +27,7 @@ class Enemy(Entity):
 		self.attack_time = None
 		self.attack_cooldown = 400
 		self.attack_radius = 60
-		self.notice_radius = 450
+		self.notice_radius = 650
 		self.attack_damage = 30
 		self.damage_player = damage_player
 		self.vulnerable = True
