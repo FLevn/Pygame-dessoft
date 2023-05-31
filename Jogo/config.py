@@ -50,7 +50,8 @@ IMG_DIR = path.join(path.dirname(__file__), 'assets', 'img')
 SND_DIR = path.join(path.dirname(__file__), 'assets', 'snd')
 FNT_DIR = path.join(path.dirname(__file__), 'assets', 'font')
 GIF_DIR = path.join(path.dirname(__file__), 'assets', 'gif')
-SOM_DIR = path.join(path.dirname(__file__), 'assets', 'Som de jumpscare')
+SOM_DIR = path.join(path.dirname(__file__), 'assets', 'Sons')
+som = (SOM_DIR, 'som de jumpscare.mp3')
 
 # Define algumas variáveis com as cores básicas
 WHITE = (255, 255, 255)
