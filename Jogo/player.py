@@ -23,7 +23,7 @@ class Player(Entity):
 		self.attack_time = None
 		self.obstacle_sprites = obstacle_sprites
 
-		self.health = 90
+		self.health = 100
 
 		# flashlight
 		self.create_attack = create_attack
@@ -69,10 +69,10 @@ class Player(Entity):
 				self.direction.x = 0
 
 			# lanterna
-			if keys[pygame.K_SPACE]:
-				self.attacking = True
-				self.attack_time = pygame.time.get_ticks()
-				self.create_attack()
+			# if keys[pygame.K_SPACE]:
+			# 	self.attacking = True
+			# 	self.attack_time = pygame.time.get_ticks()
+			# 	self.create_attack()
 
 
 	def get_status(self):
